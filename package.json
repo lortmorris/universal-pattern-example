@@ -1,0 +1,32 @@
+{
+  "name": "universal-pattern-example",
+  "version": "1.0.0",
+  "description": "Universal Pattern example",
+  "main": "index.js",
+  "scripts": {
+    "test": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lortmorris/universal-pattern-example.git"
+  },
+  "keywords": [
+    "Universal",
+    "Pattern",
+    "microservices",
+    "mongodb",
+    "swagger",
+    "nodejs"
+  ],
+  "author": "César Casas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lortmorris/universal-pattern-example/issues"
+  },
+  "homepage": "https://github.com/lortmorris/universal-pattern-example#readme",
+  "dependencies": {
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "universal-pattern": "^2.0.4"
+  }
+}

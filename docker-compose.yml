@@ -1,0 +1,23 @@
+version: "3"
+services:
+  up-example:
+    build: .
+    ports:
+      - "3500:3500"
+    links:
+      - mongodb
+    volumes:
+      - .:/home/up-example
+    environment:
+      - NODE_ENV=dev
+      - DEBUG=up-example*
+      - MONGODB_URL=mongodb://mongodb:27017
+      - MONGODB_NAME=uptesting
+      - BASEPATH=/services
+      - HOST=localhost
+      - PORT=3500
+      - NAME=upexample
+  mongodb:
+    image: mongo
+    ports:
+      - "4000:27017"
