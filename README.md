@@ -1,17 +1,17 @@
 # Universal Pattern Microservice Example
 
-Se propone desarrollar una red social de fanáticos de autos.
-El sistema permitirá buscar autos por marca, y que cada usuario pueda hacer una review de los autos encontrados.
+[Spanish version](./README.ES.MD)
 
-Esa review quedará en el feed del usuario que la realiza.
+This project aims to develop a social network for car enthusiasts. The system will allow users to search for cars by brand, and each user can review the cars they find. These reviews will appear in the user's feed.
 
-Los usuarios de la red social podrán dejar comentarios sobre las reviews realizadas, como así tambien like.
+Other social network users can leave comments on the reviews, as well as like them.
 
-# Como ejecutar el ejemplo sin Docker?
+# How to Run the Example Without Docker?
 
-Antes de ejecutar el ejemplo es necesario contar con Node.js v18 o superior y MongoDB 6 o superior.
+Before running the example, you need to have Node.js v18 or higher and MongoDB 6 or higher installed.
 
-Si es necesario, puede editar el archivo `server.sh` para cambiar la configuración del acceso a la base de datos, puerto, etc.
+If necessary, you can edit the `.env` file to change the database access configuration, port, etc.
+
 
 ```bash
 $ git clone https://github.com/lortmorris/universal-pattern-example.git
@@ -20,44 +20,42 @@ $ npm install
 $ node --env-file=.env index.js
 ```
 
-Ahora podemos abrir nuestro navegador y ver la [documentación de los endpoints](http://localhost:3500/services/docs)
+Now you can open your browser and view the [endpoints documentation](http://localhost:3500/services/docs)
 
 
-# Ejecutando con Docker
-Para ejecutar el ejemplo via docker, requerimos contar con Docker instalado.
-Al ejecutar `docker compose up` los creará dos contenedores, uno con MongoDB y otro con el microservicio.
+# Running with Docker
+
+o run the example via docker, you need to have Docker installed. Executing `docker compose up` will create two containers, one for MongoDB and another for the microservice.
 
 ```bash
 $ sudo docker compose up
 ```
 
 
-# Modulos definidos
+# Defined Modules
 
-Recordemos que [Universal Pattern](https://www.npmjs.com/package/universal-pattern) tiene como objetivo acelerar el desarrollo, ofreciendo la posibilidad de escribir endpoints desde un archivo yaml (swagger).
+Remember that [Universal Pattern](https://www.npmjs.com/package/universal-pattern) aims to accelerate development, offering the possibility to write endpoints from a yaml file (swagger).
 
 
 ## Users
-El módulo de usuarios tiene algunos detalles importantes:
-- Permite login y retorna un jwt.
-- Cuando se ejecute el ejemplo por primera vez, se creará un usuario nivel 50 (el administrador):
+The user module has some important details:
+- It allows login and returns a jwt.
+- When the example is run for the first time, a level 50 user (the administrator) will be created:
   - mail@example.com / SET_PASSWORD
-- Algunos endpoints requieren auth, es decir, que el usuario esté autentificado.
-- Algunos endpoints requieren nivel 50 (admin).
+- Some endpoints require auth, meaning the user must be authenticated.
+- Some endpoints require level 50 (admin).
 
 
 ## Brands
-Son las marcas de autos.
-Se deberá tener las marcas de los autos en una collection.
+These are the car brands. The brands of the cars should be in a collection.
 
-Sólo un usuario nivel 50 puede crear marcas.
+Only a level 50 user can create brands.
 
 ## Cars
-Es el módulo que trabaja con los autos en si.
-Para insert un nuevo `car` debemos tener en consideración:
+This module works with the cars themselves. To insert a new car, we must consider:
 
-- Los colores disponibles están en un enum, por lo cual si pasamo un color que no esté en la lista, UP retornará un error.
-- El `brandId` debe ser un id válido de MongoDB, y existir en la collection `brand`
+- The available colors are in an enum, so if we pass a color that is not in the list, UP will return an error.
+- The `brandId` must be a valid MongoDB id and exist in the `brand` collection.
 
 # Autocannon
 ```bash
